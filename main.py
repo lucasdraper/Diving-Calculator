@@ -32,26 +32,27 @@ class dive:
         self.direction = None
         self.flying = False
         self.position = None
+        self.bad = False
 
-        
-        if int(num[0]) == 5:
-            self.direction = direction(num[1])
+
+    def set(self):
+        self.bad = False
+        if int(self.number[0]) == 5: #Twisters
+            self.direction = direction(self.number[1])
             try:
-                self.twists = int(num[3]) * 0.5
+                self.twists = int(self.number[3]) * 0.5
             except:
                 print("That is not a number")
             try:
-                self.flips = int(num[2]*0.5)
+                self.flips = int(self.number[2]*0.5)
             except:
                 print("That is not a number")
-            
-
-        elif int(num[0]) <= 4:
-            self.direction = direction(num[0])
+        elif int(self.number[0]) <= 4:
+            self.direction = direction(self.number[0])
         else:
-            
-
-
+            print("This is not a valid dive number.")
+            self.number = input("Please enter a new number in the correct dive format: ")
+            self.bad = True
 
 def print_list():
     print("Your list is:")
@@ -67,10 +68,15 @@ def main():
         correct = False
         while not(correct):
             try:
-                dive(new_dive)
-                dives.append(dive(new_dive))
+                new_dive_no = dive(new_dive)
+                dives.append(new_dive_no)
+                new_dive_no.set()
+                correct = True
             except:
                 print("This is not a correct dive number")
+                print()
+        
+
     print_list()
     
 
