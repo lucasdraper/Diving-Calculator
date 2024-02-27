@@ -27,6 +27,8 @@ def print_list():
 def main():
     print("Welcome to the Dive Number calculator")
     print("This is to help you calculate your DD list")
+    print("This calculator is only for 1m diving")
+
     no_dives = int(input("Please enter the number of dives you want to have in your list: "))
     for i in range(0,no_dives):
         new_dive = input("Please enter the dive number: ")
